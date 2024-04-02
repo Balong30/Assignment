@@ -1,6 +1,22 @@
 package systempackage;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+// Define a class to represent individual expenses
+class Expense {
+    private double amount;
+
+    // Constructor to initialize an expense with the given amount
+    public Expense(double amount) {
+        this.amount = amount;
+    }
+
+    // Getter method to retrieve the amount of the expense
+    public double getAmount() {
+        return amount;
+    }
+}
 
 public class systemMain {
     public static void main(String[] args) {
@@ -8,6 +24,8 @@ public class systemMain {
         Scanner scanner = new Scanner(System.in);
         // Initialize variable to store total expenses
         double totalExpenses = 0.00;
+        // Create an ArrayList to store the list of expenses
+        ArrayList<Expense> expensesList = new ArrayList<>();
 
         // Continuously prompt the user for expense input until they choose to quit
         while (true) {
@@ -24,6 +42,10 @@ public class systemMain {
             try {
                 // Attempt to parse the input as a double (expense amount)
                 double amount = Double.parseDouble(input);
+                // Create an Expense object with the parsed amount
+                Expense expense = new Expense(amount);
+                // Add the expense object to the expenses list
+                expensesList.add(expense);
                 // Add the expense amount to the total expenses
                 totalExpenses += amount;
                 // Print a message confirming the addition of the expense
